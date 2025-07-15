@@ -1,0 +1,20 @@
+{
+  "devDependencies": {
+    "@types/node": "^24.0.12",
+    "@web/dev-server": "^0.4.6"
+  },
+  "name": "typescript-notebook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "undici-types": "^7.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "web-dev-server --node-resolve --open --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
