@@ -243,3 +243,144 @@ let obj2: Iprops = {
 };
 // obj2.name = 'test2'; // readonly degisken onune atadiginda atama yapamazsin
 console.log(obj2);
+
+//generic types
+
+type ArrProps<T> = {
+  name: T;
+};
+
+let arr7: ArrProps<string>[] = [
+  {
+    name: 'test',
+  },
+];
+
+let arr8: ArrProps<number>[] = [
+  {
+    name: 10,
+  },
+];
+let arr9: ArrProps<boolean>[] = [
+  {
+    name: true,
+  },
+];
+
+// Geleneksel tek harf isimleri
+//type Container<T> = { value: T };              // T = Type
+//type Dictionary<K, V> = { [key: K]: V };       // K = Key, V = Value
+//type EventHandler<E> = (event: E) => void;     // E = Event
+//type Component<P> = (props: P) => JSX.Element; // P = Props
+
+// ! key of kavrami (anlamadim arastir)
+
+type ITest = {
+  a: string;
+  b: string;
+  c: string;
+};
+
+type ITest2 = keyof ITest;
+
+// ! mapped types (anlamadim arastir)
+type Properties = 'a' | 'b' | 'c';
+
+type newType = {
+  [P in Properties]: number;
+};
+
+type newType2 = {
+  a: number;
+  b: number;
+  c: number;
+};
+
+//extended types
+
+interface IProperties {
+  id?: number;
+  name?: string;
+  bio?: string;
+}
+
+interface IProperties2 extends IProperties {
+  color: string;
+}
+
+let obj3: IProperties2 = {
+  id: 1,
+  name: 'Levent',
+  bio: 'yok',
+  color: 'red',
+};
+// Utilty types
+// https://www.typescriptlang.org/docs/handbook/utility-types.html
+
+//Partial
+interface IUser2 {
+  id: number;
+  name: string;
+  age: number;
+}
+
+const obj4: Partial<IUser2> = {
+  name: 'Levent',
+};
+
+//Required
+interface IUser3 {
+  id: number;
+  name: string;
+  age: number;
+}
+
+const obj5: Required<IUser3> = {
+  id: 2,
+  name: 'Levent',
+  age: 18,
+};
+
+//Readonly
+
+interface IUser4 {
+  id: number;
+  name: string;
+  age: number;
+}
+
+const obj6: Readonly<IUser4> = {
+  id: 2,
+  name: 'Levent',
+  age: 18,
+};
+
+//obj6.name = 'Levent2'; //Cannot assign to 'name' because it is a read-only property.
+
+//Pick
+
+interface IUser5 {
+  id: number;
+  name: string;
+  age: number;
+}
+
+const obj7: Pick<IUser5, 'name' | 'age'> = {
+  //id: 2,
+  name: 'Levent',
+  age: 18,
+};
+
+//Omit
+
+interface IUser6 {
+  id: number;
+  name: string;
+  age: number;
+}
+
+const obj8: Omit<IUser6, 'id'> = {
+  //id: 2,
+  name: 'Levent',
+  age: 18,
+};
