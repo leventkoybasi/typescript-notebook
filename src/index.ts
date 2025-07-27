@@ -1,10 +1,7 @@
-import { concatenation } from './concatenation';
+let message: string = 'Hello, TypeScript!';
+console.log(`(${typeof message}) -> `, message.toUpperCase());
 
-const button = document.querySelector('button');
-const input = document.querySelector('input');
-
-if (button && input) {
-  button.addEventListener('click', () => {
-    concatenation(input.value, 'hello');
-  });
-}
+const h1Element = document.createElement('h1');
+h1Element.textContent = message;
+document.body.appendChild(h1Element);
+console.log('TypeScript is running in the browser!');
